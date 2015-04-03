@@ -398,8 +398,13 @@ window.Physijs = (function() {
 		this._constraints = {};
 
 		var ab = new ArrayBuffer( 1 );
-		this._worker.transferableMessage( ab, [ab] );
-		SUPPORT_TRANSFERABLE = ( ab.byteLength === 0 );
+
+		try {
+			this._worker.transferableMessage( ab, [ab] );
+			SUPPORT_TRANSFERABLE = ( ab.byteLength === 0 );
+		} catch(e) {
+			SUPPORT_TRANSFERABLE = false;
+		}
 
 		this._worker.onmessage = function ( event ) {
 			var _temp,

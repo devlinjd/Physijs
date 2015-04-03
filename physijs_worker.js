@@ -73,10 +73,17 @@ var
 	CONSTRAINTREPORT_ITEMSIZE = 6, // constraint id, offset object, offset, applied impulse
 	constraintreport;
 
-var ab = new ArrayBuffer( 1 );
+   var ab = new ArrayBuffer( 1 );
+   var SUPPORT_TRANSFERABLE = false;
 
-transferableMessage( ab, [ab] );
-var SUPPORT_TRANSFERABLE = ( ab.byteLength === 0 );
+   try {
+      transferableMessage( ab, [ab] );
+      SUPPORT_TRANSFERABLE = ( ab.byteLength === 0 );
+   }
+   catch(e) {
+      SUPPORT_TRANSFERABLE = false;
+   }
+
 
 getShapeFromCache = function ( cache_key ) {
 	if ( _object_shapes[ cache_key ] !== undefined ) {
@@ -1370,6 +1377,15 @@ reportConstraints = function() {
 };
 
 self.onmessage = function( event ) {
+
+   //fix https://github.com/chandlerprall/Physijs/pull/207/files devlinjd
+   if (event.data instanceof ArrayBuffer) {
+      try {
+         event.data = new Float32Array(event.data);
+      } 
+      catch (e) { }
+   }
+   //end fix
 
 	if ( event.data instanceof Float32Array ) {
 		// transferable object
