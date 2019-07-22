@@ -7,9 +7,5 @@
   ],
   "ignore": [
     ".jshintrc"
-  ],
-  "dependencies": {
-    "threejs": "r59",
-    "ammo.js": "kripken/ammo.js"
-  }
+  ]
 }
