@@ -1,6 +1,6 @@
 {
   "name": "physijs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An NPM-compatible fork of Physijs (chandlerprall/physijs). Adds a single package.json so that the repository can be NPM installed with 'npm i hacksalot/physijs --save'.",
   "main": "physi.js",
   "repository": "https://github.com/hacksalot/physijs",
