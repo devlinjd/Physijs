@@ -1,6 +1,14 @@
 window.Physijs = (function() {
 	'use strict';
 
+  // Ensure that THREE is defined
+  if( THREE === undefined ) {
+    if ( typeof require === 'function' )
+      THREE = require('three');
+    else
+      THREE = window.THREE;
+  }
+
 	var SUPPORT_TRANSFERABLE,
 		_is_simulating = false,
 		_Physijs = Physijs, // used for noConflict method
