@@ -1,6 +1,6 @@
 {
   "name": "physijs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An NPM-compatible fork of Physijs (chandlerprall/physijs). Adds a single package.json so that the repository can be NPM installed with 'npm i hacksalot/physijs --save'.",
   "main": "physi.js",
   "repository": "https://github.com/hacksalot/physijs",
@@ -9,5 +9,9 @@
     "James Devlin <hacksalot@indevious.com> (https://deskchained.com)"
   ],
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "ammo.js": "0.0.10",
+    "three": "^0.106.2"
+  }
 }
